@@ -41,16 +41,46 @@ def itemIds = fileTree("src/main/resources/assets/nmtr-locometal/models/item")
 	.matching { include "*.json" }
 	.files
 	.collect { it.name.substring(0, it.name.length() - ".json".length()) }
-	.sort()
+	.findAll { !it.contains("locometal_window") }
+	.findAll { !it.contains("folding_locometal_door") && !it.contains("sliding_locometal_door") }
 def blockStateDirectory = file("src/main/resources/assets/nmtr-locometal/blockstates")
 def blockIds = fileTree(blockStateDirectory)
 	.matching { include "*.json" }
 	.files
 	.findAll { it.parentFile == blockStateDirectory }
 	.collect { it.name.substring(0, it.name.length() - ".json".length()) }
+	.findAll { !it.contains("locometal_window") }
+def paletteModelDirectory = file("src/main/resources/assets/nmtr-locometal/models/block/palettes")
+def hazardStripeModels = fileTree(paletteModelDirectory)
+	.matching { include "*/hazard_stripes_*.json" }
+	.files
+	.findAll {
+		it.parentFile.parentFile == paletteModelDirectory &&
+			it.name ==~ /hazard_stripes_(diagonal|chevron)_on_(black|white)\.json/
+	}
+def hazardStripeIds = hazardStripeModels.collect { model ->
+	def palette = model.parentFile.name
+	def modelId = model.name.substring(0, model.name.length() - ".json".length())
+	palette == "netherite" ? modelId : "${palette}_${modelId}"
+}.sort()
+blockIds = (blockIds + hazardStripeIds).unique()
+def paletteNames = paletteModelDirectory.listFiles()
+	.findAll { it.directory }
+	.collect { it.name }
+	.unique()
 	.sort()
+blockIds = blockIds.sort { left, right ->
+	def leftPlain = !paletteNames.any { palette -> left.startsWith("${palette}_") }
+	def rightPlain = !paletteNames.any { palette -> right.startsWith("${palette}_") }
+	if (leftPlain != rightPlain) return leftPlain ? -1 : 1
+	left.compareTo(right)
+}
+itemIds = (itemIds + hazardStripeIds).unique().sort()
+itemIds = itemIds.findAll { !it.contains("folding_locometal_door") && !it.contains("sliding_locometal_door") }
 
 processResources {
+	exclude "**/*locometal_window*.json"
+
 	def version = project.version
 	inputs.property "version", version
 
@@ -60,10 +90,59 @@ processResources {
 
 	doLast {
 		def modId = "nmtr-locometal"
+		hazardStripeModels.each { model ->
+			def palette = model.parentFile.name
+			def modelId = model.name.substring(0, model.name.length() - ".json".length())
+			def blockId = palette == "netherite" ? modelId : "${palette}_${modelId}"
+			def blockModel = "${modId}:block/palettes/${palette}/${modelId}"
+
+			def blockStateFile = new File(destinationDir, "assets/${modId}/blockstates/${blockId}.json")
+			blockStateFile.parentFile.mkdirs()
+			blockStateFile.text = groovy.json.JsonOutput.toJson([
+				variants: [ "": [ model: blockModel ] ]
+			]) + "\n"
+
+			def itemModelFile = new File(destinationDir, "assets/${modId}/models/item/${blockId}.json")
+			itemModelFile.parentFile.mkdirs()
+			itemModelFile.text = groovy.json.JsonOutput.toJson([ parent: blockModel ]) + "\n"
+		}
+
 		def registryFile = new File(destinationDir, "assets/${modId}/item_registry.txt")
 		registryFile.parentFile.mkdirs()
 		registryFile.text = itemIds.join("\n") + "\n"
 		new File(destinationDir, "assets/${modId}/block_registry.txt").text = blockIds.join("\n") + "\n"
+
+		def filterGroups = [
+			grayscale: [title: "Grayscale", items: []],
+			brown: [title: "Brown", items: []],
+			hazard_stripes: [title: "Hazard Stripes", items: []],
+			coloured: [title: "Coloured", items: []]
+		]
+		def grayscalePalettes = ["black", "diorite", "gray", "light_gray", "limestone", "scorchia", "tuff", "white"] as Set
+		def brownPalettes = ["brown", "dripstone", "granite", "ochrum"] as Set
+		blockIds.each { blockId ->
+			def palette = paletteNames.find { blockId.startsWith("${it}_") }
+			def filterId
+			if (blockId.contains("hazard_stripes_")) {
+				filterId = "hazard_stripes"
+			} else if (palette == null || grayscalePalettes.contains(palette)) {
+				filterId = "grayscale"
+			} else if (brownPalettes.contains(palette)) {
+				filterId = "brown"
+			} else {
+				filterId = "coloured"
+			}
+			filterGroups[filterId].items.add("${modId}:${blockId}")
+		}
+		filterGroups.each { filterId, filter ->
+			filter.icon = filter.items.first()
+		}
+
+		def filtersFile = new File(destinationDir, "assets/filters/filters.json")
+		filtersFile.parentFile.mkdirs()
+		filtersFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([
+			"${modId}:content": filterGroups
+		])) + "\n"
 
 		def languageFile = new File(destinationDir, "assets/${modId}/lang/en_us.json")
 		def translations = new groovy.json.JsonSlurper().parse(languageFile)

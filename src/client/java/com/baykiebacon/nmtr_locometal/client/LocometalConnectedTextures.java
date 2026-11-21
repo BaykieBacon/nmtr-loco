@@ -40,7 +40,8 @@ final class LocometalConnectedTextures {
 		CTTypeRegistry.register(VERTICAL_PINKMACHINE);
 		blocks.forEach((id, block) -> {
 			register(id, block);
-			if (id.endsWith("_locometal_window") || id.endsWith("_locometal_end_ladder") || id.endsWith("_locometal_rung_ladder")) {
+			if (id.endsWith("_locometal_end_ladder") || id.equals("locometal_end_ladder")
+				|| id.endsWith("_locometal_rung_ladder") || id.equals("locometal_rung_ladder")) {
 				BlockRenderLayerMap.INSTANCE.putBlock(block, RenderType.cutoutMipped());
 			}
 		});
@@ -63,8 +64,6 @@ final class LocometalConnectedTextures {
 			behaviour = new BoilerBehaviour(shift);
 		} else if (id.endsWith("_locometal_pillar") || id.endsWith("_locometal_smokebox")) {
 			behaviour = new PillarBehaviour(shift);
-		} else if (id.endsWith("_locometal_window")) {
-			behaviour = new SimpleCTBehaviour(shift);
 		} else {
 			behaviour = new SimpleCTBehaviour(shift);
 		}
@@ -94,12 +93,6 @@ final class LocometalConnectedTextures {
 			if (id.contains("_brass_wrapped_") || id.startsWith("wrapped_")) return "wrapped_tank_side";
 			return "tank_side";
 		}
-		if (id.endsWith("_locometal_window")) {
-			if (id.contains("four_pane")) return "four_pane_window";
-			if (id.contains("two_pane")) return "two_pane_window";
-			if (id.contains("single_pane")) return "single_pane_window";
-			return "round_pane_window";
-		}
 		if (id.endsWith("_locometal_boiler")) {
 			if (id.contains("copper_wrapped")) return "copper_wrapped_boiler_side";
 			if (id.contains("iron_wrapped")) return "iron_wrapped_boiler_side";
@@ -113,7 +106,6 @@ final class LocometalConnectedTextures {
 		if (id.endsWith("_locometal_boiler")) return AllCTTypes.HORIZONTAL_KRYPPERS;
 		if (id.endsWith("_locometal_smokebox")) return VERTICAL_PINKMACHINE;
 		if (id.endsWith("_locometal_pillar")) return AllCTTypes.VERTICAL;
-		if (id.endsWith("_locometal_window")) return AllCTTypes.OMNIDIRECTIONAL;
 		return AllCTTypes.OMNIDIRECTIONAL;
 	}
 

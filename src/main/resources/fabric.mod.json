@@ -35,5 +35,8 @@
 		"java": ">=17",
 		"fabric-api": "*",
 		"create": ">=6.0.7"
+	},
+	"suggests": {
+		"filters": ">=1.1.0"
 	}
 }
