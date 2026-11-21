@@ -50,6 +50,7 @@ def blockIds = fileTree(blockStateDirectory)
 	.findAll { it.parentFile == blockStateDirectory }
 	.collect { it.name.substring(0, it.name.length() - ".json".length()) }
 	.findAll { !it.contains("locometal_window") }
+	.findAll { !it.contains("folding_locometal_door") && !it.contains("sliding_locometal_door") }
 def paletteModelDirectory = file("src/main/resources/assets/nmtr-locometal/models/block/palettes")
 def hazardStripeModels = fileTree(paletteModelDirectory)
 	.matching { include "*/hazard_stripes_*.json" }

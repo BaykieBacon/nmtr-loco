@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.TrapDoorBlock;
 
 public final class LocometalBlocks {
 	private static final BooleanProperty WINDOWED = BooleanProperty.create("windowed");
-	private static final BooleanProperty VISIBLE = BooleanProperty.create("visible");
 	private static final EnumProperty<BoilerStyle> STYLE = EnumProperty.create("style", BoilerStyle.class);
 	private static final EnumProperty<Direction.Axis> HORIZONTAL_AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 	private static final BooleanProperty RAISED = BooleanProperty.create("raised");
@@ -34,10 +33,6 @@ public final class LocometalBlocks {
 		if (id.endsWith("_locometal_boiler") || id.equals("locometal_boiler")) return new Boiler(properties);
 		if (id.endsWith("_locometal_smokebox") || id.equals("locometal_smokebox")) return new FacingBlock(properties);
 		if (id.endsWith("_hinged_locometal_door") || id.equals("hinged_locometal_door")) return new HingedDoor(properties);
-		if (id.endsWith("_folding_locometal_door") || id.equals("folding_locometal_door")
-			|| id.endsWith("_sliding_locometal_door") || id.equals("sliding_locometal_door")) {
-			return new WindowedVisibleDoor(properties);
-		}
 		if (id.endsWith("_locometal_trapdoor") || id.equals("locometal_trapdoor")) return new WindowedTrapdoor(properties);
 		if (id.endsWith("_locometal_flywheel") || id.equals("locometal_flywheel")) return new FlywheelBlock(properties.noOcclusion());
 		if (id.endsWith("_locometal_pillar") || id.equals("locometal_pillar")) return new PillarBlock(properties);
@@ -82,21 +77,6 @@ public final class LocometalBlocks {
 		protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 			super.createBlockStateDefinition(builder);
 			builder.add(WINDOWED);
-		}
-	}
-
-	private static final class WindowedVisibleDoor extends DoorBlock {
-		private WindowedVisibleDoor(Properties properties) {
-			super(properties, BlockSetType.OAK);
-			registerDefaultState(defaultBlockState()
-				.setValue(WINDOWED, false)
-				.setValue(VISIBLE, true));
-		}
-
-		@Override
-		protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-			super.createBlockStateDefinition(builder);
-			builder.add(WINDOWED, VISIBLE);
 		}
 	}
 

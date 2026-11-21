@@ -22,7 +22,7 @@ public class NmtrLocometal implements ModInitializer {
 		// Proceed with mild caution.
 
 		ModItems.initialize();
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("NovaMTR Locometal Initialised.");
 	}
 
 	public static ResourceLocation id(String path) {
