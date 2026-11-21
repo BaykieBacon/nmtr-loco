@@ -1,10 +1,9 @@
 # NMTR-Locometal
 Locometal functionality isolated from [Create Steam n' Rails](https://github.com/Layers-of-Railways/Railway) for use in Nova MTR.
 
----
-
 # Dependencies
 **Minecraft 1.20.1**
+
 **Fabric ModLoader**
 
 **Create Mod Fabric**
