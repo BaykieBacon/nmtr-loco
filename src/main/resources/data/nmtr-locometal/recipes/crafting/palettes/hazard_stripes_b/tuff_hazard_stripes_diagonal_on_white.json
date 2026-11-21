@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"misc","key":{"#":{"item":"nmtr-locometal:white_slashed_locometal"},".":{"item":"nmtr-locometal:tuff_slashed_locometal"}},"pattern":[".#","#."],"result":{"count":4,"item":"nmtr-locometal:tuff_hazard_stripes_diagonal_on_white"},"show_notification":true}

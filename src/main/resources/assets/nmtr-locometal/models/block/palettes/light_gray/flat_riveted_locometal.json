@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "nmtr-locometal:block/palettes/light_gray/annexed_riveted"
+  }
+}

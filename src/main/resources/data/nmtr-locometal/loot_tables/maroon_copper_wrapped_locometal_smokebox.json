@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"bonus_rolls":0.0,"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"type":"minecraft:item","name":"nmtr-locometal:maroon_copper_wrapped_locometal_smokebox"}],"rolls":1.0}],"random_sequence":"nmtr-locometal:blocks/maroon_copper_wrapped_locometal_smokebox"}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/flywheel/block",
+  "textures": {
+    "0": "nmtr-locometal:block/palettes/gray/flywheel",
+    "particle": "nmtr-locometal:block/palettes/gray/flywheel"
+  }
+}

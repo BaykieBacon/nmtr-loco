@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "nmtr-locometal:block/palettes/maroon/riveted_pillar_top",
+    "side": "nmtr-locometal:block/palettes/maroon/riveted_pillar_side"
+  }
+}

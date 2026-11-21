@@ -1,0 +1,9 @@
+{
+  "parent": "nmtr-locometal:block/palettes/doors/fold_left",
+  "textures": {
+    "block_particle": "nmtr-locometal:block/palettes/diorite/annexed_slashed",
+    "bottom": "nmtr-locometal:block/palettes/diorite/folding_windowed_door_bottom",
+    "side": "nmtr-locometal:block/palettes/diorite/folding_windowed_door_side",
+    "top": "nmtr-locometal:block/palettes/diorite/folding_windowed_door_top"
+  }
+}

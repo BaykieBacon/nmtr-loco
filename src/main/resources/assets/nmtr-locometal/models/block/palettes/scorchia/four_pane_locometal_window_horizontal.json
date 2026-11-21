@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "nmtr-locometal:block/palettes/scorchia/four_pane_window",
+    "side": "nmtr-locometal:block/palettes/scorchia/four_pane_window"
+  }
+}

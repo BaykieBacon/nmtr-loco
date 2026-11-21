@@ -1,0 +1,9 @@
+{
+  "parent": "nmtr-locometal:block/palettes/doors/fold_right",
+  "textures": {
+    "block_particle": "nmtr-locometal:block/palettes/maroon/annexed_slashed",
+    "bottom": "nmtr-locometal:block/palettes/maroon/folding_door_bottom",
+    "side": "nmtr-locometal:block/palettes/maroon/folding_door_side",
+    "top": "nmtr-locometal:block/palettes/maroon/folding_door_top"
+  }
+}

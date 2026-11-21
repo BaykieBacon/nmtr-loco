@@ -1,0 +1,6 @@
+{
+  "parent": "nmtr-locometal:block/palettes/hazard_stripes/chevron",
+  "textures": {
+    "texture": "nmtr-locometal:block/palettes/chartreuse/hazard_stripes_chevron_a_on_white"
+  }
+}

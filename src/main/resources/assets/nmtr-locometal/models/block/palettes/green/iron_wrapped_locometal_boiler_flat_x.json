@@ -1,0 +1,12 @@
+{
+  "parent": "nmtr-locometal:block/palettes/boiler/boiler",
+  "flip_v": true,
+  "loader": "forge:obj",
+  "model": "nmtr-locometal:models/block/palettes/boiler/boiler_x.obj",
+  "porting_lib:loader": "porting_lib:obj",
+  "textures": {
+    "front": "nmtr-locometal:block/palettes/green/boiler_slashed",
+    "particle": "nmtr-locometal:block/palettes/green/riveted_pillar_top",
+    "sides": "nmtr-locometal:block/palettes/green/iron_wrapped_boiler_side"
+  }
+}

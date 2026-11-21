@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/ladder",
+  "textures": {
+    "0": "nmtr-locometal:block/palettes/magenta/end_ladder_hoop",
+    "1": "nmtr-locometal:block/palettes/magenta/end_ladder",
+    "particle": "nmtr-locometal:block/palettes/magenta/end_ladder"
+  }
+}

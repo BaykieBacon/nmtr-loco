@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","category":"misc","key":{"#":{"item":"nmtr-locometal:black_slashed_locometal"},".":{"item":"nmtr-locometal:orange_slashed_locometal"}},"pattern":[".#","#."],"result":{"count":4,"item":"nmtr-locometal:orange_hazard_stripes_diagonal_on_black"},"show_notification":true}

@@ -1,0 +1,6 @@
+{
+  "parent": "nmtr-locometal:block/palettes/hazard_stripes/diagonal",
+  "textures": {
+    "texture": "nmtr-locometal:block/palettes/sea_green/hazard_stripes_diagonal_a_on_white"
+  }
+}

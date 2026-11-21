@@ -1,0 +1,7 @@
+{
+  "parent": "nmtr-locometal:block/palettes/smokebox/smokebox_horizontal",
+  "textures": {
+    "side": "nmtr-locometal:block/palettes/magenta/wrapped_tank_side",
+    "top": "nmtr-locometal:block/palettes/magenta/smokebox_tank_top"
+  }
+}

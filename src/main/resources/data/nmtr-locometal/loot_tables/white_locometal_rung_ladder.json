@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"bonus_rolls":0.0,"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"type":"minecraft:item","name":"nmtr-locometal:white_locometal_rung_ladder"}],"rolls":1.0}],"random_sequence":"nmtr-locometal:blocks/white_locometal_rung_ladder"}

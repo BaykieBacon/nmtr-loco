@@ -1,0 +1,8 @@
+{
+  "parent": "nmtr-locometal:block/palettes/doors/block_bottom_left",
+  "textures": {
+    "block_particle": "nmtr-locometal:block/palettes/red/annexed_slashed",
+    "bottom": "nmtr-locometal:block/palettes/red/sliding_windowed_door_bottom",
+    "side": "nmtr-locometal:block/palettes/red/sliding_windowed_door_side"
+  }
+}

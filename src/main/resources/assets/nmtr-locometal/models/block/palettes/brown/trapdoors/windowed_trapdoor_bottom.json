@@ -1,0 +1,7 @@
+{
+  "parent": "nmtr-locometal:block/palettes/trapdoors/template_orientable_trapdoor_bottom",
+  "textures": {
+    "side": "nmtr-locometal:block/palettes/brown/hinged_door_side",
+    "texture": "nmtr-locometal:block/palettes/brown/windowed_trapdoor"
+  }
+}

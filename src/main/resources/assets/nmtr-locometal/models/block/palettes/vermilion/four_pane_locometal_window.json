@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "nmtr-locometal:block/palettes/vermilion/four_pane_window",
+    "side": "nmtr-locometal:block/palettes/vermilion/four_pane_window"
+  }
+}
